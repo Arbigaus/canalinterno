@@ -11,13 +11,13 @@ define("BASEADMIN", $admin_url);
 global $config;
 $config = array();
 if(ENVIRONMENT == "development") {
-	$config['dbname'] = 'mvc';
+	$config['dbname'] = 'db_canalinterno';
 	$config['host'] = 'localhost';
-	$config['dbuser'] = 'projetos';
+	$config['dbuser'] = 'root';
 	$config['dbpass'] = 'g123456@*';
 } else {
-	$config['dbname'] = 'mvc';
+	$config['dbname'] = 'db_canalinterno';
 	$config['host'] = 'localhost';
-	$config['dbuser'] = 'projetos';
+	$config['dbuser'] = 'root';
 	$config['dbpass'] = 'g123456@*';
 }

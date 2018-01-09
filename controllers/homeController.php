@@ -7,13 +7,13 @@ class homeController extends Controller {
 
 	public function index(){
 		$data = array();
-		Pagination::setTable('tab_clients');
-		$data['lista'] = Pagination::createPagination();
-		$data['links'] = Pagination::createLinks();
+		// Pagination::setTable('tab_clients');
+		// $data['lista'] = Pagination::createPagination();
+		// $data['links'] = Pagination::createLinks();
 
 
-		$string = "Programar é uma arte, portanto nem todos irão admirar e gostar!.";
-		echo Helpers::limitWords($string, 9);
+		// $string = "Programar é uma arte, portanto nem todos irão admirar e gostar!.";
+		// echo Helpers::limitWords($string, 9);
 
 		// echo "<pre>";
 		// print_r($data['links']);

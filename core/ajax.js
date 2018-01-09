@@ -1,6 +1,5 @@
 $(function(){
 
-	var BASE = "http://sistema.pc/";
 	var alerts = ["alert-info","alert-warning","alert-success","alert-danger"];
 
 	$('form').submit(function(){
@@ -17,10 +16,12 @@ $(function(){
 			processData: false,
 			contentType: false,
 			beforeSend: function(data){
+				$(".i-send").removeClass("fa-arrow-right");
 				$(".i-send").addClass("fa-spinner fa-spin");
 
 				$.each(alerts, function(key,value){
 					$(".alert").removeClass(value);
+					$(".i-send").addClass("fa-arrow-right");
 				});
 			},
 			success: function(data){
@@ -28,7 +29,9 @@ $(function(){
 
 				if(data.return){
 					$('.alert').addClass(data.return[0]);
-					$('.result').html(data.return[1]);
+					$('.icone').addClass(data.return[1]);
+					$('.title-alert').html(data.return[2]);
+					$('.result').html(data.return[3]);
 					$('.count_client').html(data.count_client);
 				}
 
