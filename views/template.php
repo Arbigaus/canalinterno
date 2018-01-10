@@ -14,7 +14,7 @@
 <body>
 	<!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark"> <!-- #203A65 -->
-    <a class="navbar-brand" href="<?php echo BASE; ?> "><h2>Cotrasa</h2></a>
+    <a class="navbar-brand" href="<?php echo BASE; ?> "><img src="<?php echo BASE; ?>/assets/images/logo.png" alt="Cotrasa"></a>
   </nav>
 	<!-- End Navbar -->
 
