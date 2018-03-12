@@ -8,6 +8,11 @@ define("BASE", $url);
 $admin_url = $url."/admin";
 define("BASEADMIN", $admin_url);
 
+// TODO: Definição da global Tile
+$title = explode('.', BASE);
+$title = (substr($title[0], 7) == 'canalinterno') ? 'Interno' : 'Externo';
+define("TITLE", $title);
+
 global $config;
 $config = array();
 if(ENVIRONMENT == "development") {

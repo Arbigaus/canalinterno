@@ -1,4 +1,5 @@
 <?php
+
 class homeController extends Controller {
 
 	public function __construct(){
@@ -7,6 +8,7 @@ class homeController extends Controller {
 
 	public function index(){
 		$data = array();
+
 		// Pagination::setTable('tab_clients');
 		// $data['lista'] = Pagination::createPagination();
 		// $data['links'] = Pagination::createLinks();
@@ -22,5 +24,11 @@ class homeController extends Controller {
 
 		$this->loadTemplate('home', $data);
 
+	}
+
+	public function about(){
+		$data = array();
+
+		$this->loadTemplate('sobre', $data);
 	}
 }

@@ -1,6 +1,4 @@
 <?php
-require_once 'Library/Mailer/PHPMailer.php';
-require_once 'Library/Mailer/SMTP.php';
 
 class SendMail extends Model {
   private static $MailResult;
@@ -24,7 +22,7 @@ class SendMail extends Model {
         );
 
         $mail->Port = "587";
-        $mail->SMPTSecure = "tls";
+        $mail->SMPTSecure = "ssl";
 
         $mail->IsSMTP();
         // $mail->SMTPDebug = 4;
@@ -32,20 +30,19 @@ class SendMail extends Model {
         $mail->SMTPAuth	= false;
 
         $mail->Username = "sistema@cotrasa.com.br";
-        // $mail->Password = "!*8271208Ga";
 
         $mail->SetFrom("sistema@cotrasa.com.br", "Sistema Cotrasa");
 
-        $mail->AddAddress("lg-cot-operacoes@cotrasa.com.br", "TIC");
-        // $mail->AddCC("gerson87@gmail.com", "Gerson");
+        // $mail->AddAddress("gerson.arbrugaus@cotrasa.com.br", "Gerson Arbrugaus");
+        $mail->AddAddress("cristiano.locatelli@cotrasa.com.br", "Cristiano Locatelli");
+        $mail->AddAddress("dorival.bravo@cotrasa.com.br", "Dorival Bravo");
 
         $mail->isHTML(true);
         
-        $mail->Subject	= "Contato - Canal Interno";
-        $mail->Body			.= "<b>Tipo de Mensagem:</b> ".$data['col_tipo']."<br>";
+        $mail->Subject	= "Contato - Canal ".TITLE." | ".$data['col_assunto'];
         $mail->Body			.= (!empty($data['col_name']))? "<b>Nome:</b> ". $data['col_name']."<br>" : "<b>Nome:</b> Anônimo <br>";
         $mail->Body			.= (!empty($data['col_email']))? "<b>E-mail:</b> ". $data['col_email']."<br>" : "";
-        $mail->Body			.= "<b>Filal:</b> ".$data['col_filial']."<br><br>";
+        $mail->Body			.= ($data['col_filial'] != 'filial')? "<b>Filal:</b> ". $data['col_filial']."<br>" : "";
         $mail->Body			.= "<b>Mensagem:</b><br>";
         $mail->Body			.= $data['col_msg']."<br>";
         
@@ -59,11 +56,11 @@ class SendMail extends Model {
 		}
   }
   
-  public function setMailResult($data){
+  public static function setMailResult($data){
     self::$MailResult = $data;
   }
 
-  public function getMailResult(){
+  public static function getMailResult(){
     return self::$MailResult;
   }
 }

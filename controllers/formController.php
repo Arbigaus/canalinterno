@@ -18,12 +18,10 @@ class formController extends Controller {
     $dados_form = filter_input_array(INPUT_POST,FILTER_SANITIZE_MAGIC_QUOTES);
     $dados_form['col_date'] = date('Y-m-d H:i:s');
 
-    if($dados_form['col_filial'] == "filial"):
-      $data['return'] = $this->ajaxError("Favor selecionar a Filial");     
-    elseif($dados_form['col_tipo'] == "tipo"):
-      $data['return'] = $this->ajaxError("Favor selecionar o tipo de mensagem");
+    if(empty($dados_form['col_assunto'])):
+      $data['return'] = $this->ajaxError("Favor informar o assunto.");
     elseif(empty($dados_form['col_msg'])):
-       $data['return'] = $this->ajaxError("Favor preenchar a mensagem que deseja enviar");
+       $data['return'] = $this->ajaxError("Favor preenchar a mensagem que deseja enviar.");
     else:
       Form::Create($dados_form);
       if(SendMail::sendMail($dados_form)):
@@ -33,8 +31,6 @@ class formController extends Controller {
         $data['return'] = $this->ajaxError("Ocorreu algum erro, favor tentar novamente.");
       endif;
     endif;
-
-    
     echo json_encode($data);
   }
 }

@@ -1,6 +1,12 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors","on");
+
 session_start();
 require 'config.php';
+
+require_once 'Library/Mailer/PHPMailer.php';
+require_once 'Library/Mailer/SMTP.php';
 
 spl_autoload_register(function ($class){
 	if(strpos($class, 'Controller') > -1){
