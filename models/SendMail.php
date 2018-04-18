@@ -33,9 +33,7 @@ class SendMail extends Model {
 
         $mail->SetFrom("sistema@cotrasa.com.br", "Sistema Cotrasa");
 
-        // $mail->AddAddress("gerson.arbrugaus@cotrasa.com.br", "Gerson Arbrugaus");
-        $mail->AddAddress("cristiano.locatelli@cotrasa.com.br", "Cristiano Locatelli");
-        $mail->AddAddress("dorival.bravo@cotrasa.com.br", "Dorival Bravo");
+        $mail->AddAddress("gerson.arbrugaus@cotrasa.com.br", "Gerson Arbrugaus");
 
         $mail->isHTML(true);
         
